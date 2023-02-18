@@ -1,21 +1,53 @@
-const radius = 225;
-const centerX = 225;
-const centerY = 225;
+document.addEventListener("DOMContentLoaded", function() {
+    const container = $("#planets-container");
+    const planets = Array.from(container.children);
+    const degree = 360 / planets.length;
+    const startingDegree = 90;
+    const speed = 10;
+    const centerX = container.clientWidth/2 - 25;
+    const centerY = container.clientHeight/2 - 25;
+    const radius = Math.min(centerX, centerY);
 
-let i = 0;
+    let rotation = 0;
 
-const image = document.querySelector('.image');
-const intervalId = setInterval(() => {
+    planets.forEach((planet, i) => {
+        planet.degree = (degree * i + startingDegree);
+        const theta = planet.degree * Math.PI / 180;
+        const x = centerX + radius * Math.cos(theta);
+        const y = centerY + radius * Math.sin(theta);
+        planet.style.transform = "translate("+x+"px, "+y+"px)";
+    });
 
-    const theta = i * Math.PI / 180;
-    const x = centerX + radius * Math.cos(theta);
-    const y = centerY + radius * Math.sin(theta);
+    $("#rotate").onclick = () => {
+        let i = 0;
+        rotation++;
+        if (rotation > 1) return;
+        const intervalId = setInterval(() => {
 
-    image.style.transform = "translate("+x+"px, "+y+"px)";
+            planets.forEach((planet) => {
+                const theta = (i + planet.degree) * Math.PI / 180;
+                const x = centerX + radius * Math.cos(theta);
+                const y = centerY + radius * Math.sin(theta);
+                planet.style.transform = "translate("+x+"px, "+y+"px)";
+            });
 
-    i++;
+            i++;
 
-    if (i === 360) {
-        clearInterval(intervalId);
+            if (i === degree * rotation) {
+                planets.forEach(planet => {
+                    planet.degree += i;
+                });
+                rotation = 0;
+                clearInterval(intervalId);
+            }
+        }, speed);
     }
-}, 10);
+});
+
+
+function $(selector) {
+    return document.querySelector(selector);
+}
+function $$(selector) {
+    return document.querySelectorAll(selector);
+}

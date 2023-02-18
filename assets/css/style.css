@@ -1,13 +1,14 @@
-.container {
+#planets-container {
     position: relative;
     width: 500px;
     height: 500px;
     border: 2px solid black;
 }
-
-.image {
-    position: absolute;
-    width: 50px;
+#planets-container img {
     height: 50px;
-    transition: all 10ms;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 10ms;
 }
