@@ -43,7 +43,7 @@ body {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
-.planet-description h1, .planet-description p {
+.planet-description h1, .planet-description h2 {
     -webkit-background-clip: text;
     color: transparent;
 }
@@ -62,6 +62,7 @@ img.rotate {
     top: 35vh;
     left: 5vw;
     cursor: pointer;
+    opacity: 0.4;
 }
 img.rotate.right {
     right: 5vw;

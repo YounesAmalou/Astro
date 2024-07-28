@@ -11,7 +11,7 @@ planets.unshift(planets.pop());
 planetsDescriptionContainer.innerHTML = planets.map((planet) => {
     return `<div class="planet-description ${planet.name.toLowerCase()}" >
                 <h1>${planet.name}</h1>
-                <p>${planet.description}</p>
+                <h2 >${planet.description}</h2>
             </div>`;
 }).join('');
 const planetDescriptions = Array.from(planetsDescriptionContainer.children);
