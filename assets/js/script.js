@@ -83,7 +83,7 @@ function rotate() {
 }
 
 $('#planets-container').style.top = -(window.innerWidth / 2 - 150) + "px";
-const bottom = window.innerHeight > window.innerWidth ? 250 : 150
+const bottom = window.innerHeight > window.innerWidth ? 450 : 200
 $('#planets-description-container').style.bottom = -(window.innerWidth / 2 - bottom) + "px";
 planetImages.forEach(setupPosition);
 planetDescriptions.forEach(setupDescriptionPosition);
